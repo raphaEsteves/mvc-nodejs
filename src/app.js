@@ -2,6 +2,8 @@ import express from 'express';
 
 const app = express();
 
+app.use(express.json())
+
 //mock
 let filmes90 = [
     {id: 1, titulo: "A Lista de Schindler", duracao: "3h 15min", minutos: 195},
@@ -20,8 +22,15 @@ app.get('/', (req, res)=>{
     res.send("Hello world!");
 })
 
+//Lista o array
 app.get('/filmes/90', (req, res) => {
     res.status(200).send(filmes90)
+})
+
+//Adiciona um dado ao array
+app.post('/filmes/90', (req, res) => {
+    filmes90.push(req.body);
+    res.status(200).send('Filme adicionado com sucesso!');
 })
 
 export default app;
