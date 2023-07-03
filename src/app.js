@@ -5,14 +5,6 @@ const app = express();
 
 app.use(express.json())
 
-function buscarFilmesId(id) {
-    return filmes90.filter(item => item.id == id);
-}
-
-function buscaIndexFilme(id) {
-    return filmes90.findIndex(item => item.id == id);
-}
-
 //Lê os objetos do array
 app.get('/filmes/90', (req, res) => {
     const sql = "SELECT * FROM tb_filmes90;"
