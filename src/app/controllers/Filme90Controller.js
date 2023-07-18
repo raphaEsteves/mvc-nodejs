@@ -13,7 +13,18 @@ class Filme90Controller {
     }
     
     //lista por ID
-    show() {} 
+    show(req, res) {
+        const id = req.params.id;
+        const sql = "SELECT * FROM tb_filmes90 WHERE id=?;"
+        conexao.query(sql, id, (error, result) => {
+            const row = result[0];
+            if(error){
+                res.status(404).json( {'Error': error})
+            } else {
+                res.status(200).json(row);
+            }
+        })
+    } 
 
     //cria dados
     store() {} 

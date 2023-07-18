@@ -5,21 +5,10 @@ const app = express();
 
 app.use(express.json())
 
+//ROTAS
 app.get('/filmes/90', Filme90Controller.index);
 
-//ROTAS
-app.get('/filmes/90/:id', (req, res) => {
-    const id = req.params.id;
-    const sql = "SELECT * FROM tb_filmes90 WHERE id=?;"
-    conexao.query(sql, id, (error, result) => {
-        const row = result[0];
-        if(error){
-            res.status(404).json( {'Error': error})
-        } else {
-            res.status(200).json(row);
-        }
-    })
-})
+app.get('/filmes/90/:id', Filme90Controller.show);
 
 app.post('/filmes/90', (req, res) => {
     const filme90 = req.body;
