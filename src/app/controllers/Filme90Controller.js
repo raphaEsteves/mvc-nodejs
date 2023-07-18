@@ -40,7 +40,18 @@ class Filme90Controller {
     }
 
     //atualiza dados
-    update() {}
+    update(req, res) {
+        const id = req.params.id;
+        const filme90 = req.body;
+        const sql = "UPDATE tb_filmes90 SET ? WHERE id=?;"
+        conexao.query(sql, [filme90, id], (error, result) => {
+            if(error){
+                res.status(404).json( {'Error': error})
+            } else {
+                res.status(200).json(result);
+            }
+        })
+    }
     
      //exclui dados
     delete() {}

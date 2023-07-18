@@ -12,18 +12,7 @@ app.get('/filmes/90/:id', Filme90Controller.show);
 
 app.post('/filmes/90', Filme90Controller.store);
 
-app.put('/filmes/90/:id', (req, res) => {
-    const id = req.params.id;
-    const filme90 = req.body;
-    const sql = "UPDATE tb_filmes90 SET ? WHERE id=?;"
-    conexao.query(sql, [filme90, id], (error, result) => {
-        if(error){
-            res.status(404).json( {'Error': error})
-        } else {
-            res.status(200).json(result);
-        }
-    })
-})
+app.put('/filmes/90/:id', Filme90Controller.update);
 
 app.delete('/filmes/90/:id', (req, res) => {
     const id = req.params.id;
