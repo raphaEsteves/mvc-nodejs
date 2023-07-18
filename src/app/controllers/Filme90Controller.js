@@ -27,7 +27,17 @@ class Filme90Controller {
     } 
 
     //cria dados
-    store() {} 
+    store(req, res) {
+        const filme90 = req.body;
+        const sql = "INSERT INTO tb_filmes90 SET ?;"
+        conexao.query(sql, filme90, (error, result) => {
+            if(error){
+                res.status(404).json( {'Error': error})
+            } else {
+                res.status(201).json(result);
+            }
+        })
+    }
 
     //atualiza dados
     update() {}
