@@ -1,3 +1,4 @@
+import conexao from '../database/conexao.js';
 class Filme90Controller {
 
     //lista tudo

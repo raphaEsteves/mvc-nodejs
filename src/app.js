@@ -1,5 +1,4 @@
 import express from 'express';
-import conexao from './app/database/conexao.js';
 import Filme90Controller from './app/controllers/Filme90Controller.js';
 const app = express();
 
