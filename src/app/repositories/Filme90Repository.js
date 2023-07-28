@@ -33,7 +33,6 @@ class Filme90Repository{
     delete(id) {
         const sql = "DELETE * FROM tb_filmes90 WHERE id=?;"
         return consulta(sql, id, "Não foi possível apagar!");
-
     }
 }
 
